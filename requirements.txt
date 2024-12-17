@@ -1,0 +1,4 @@
+imaplib
+pyperclip
+keyboard
+langdetect
