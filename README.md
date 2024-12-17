@@ -28,4 +28,111 @@ If a code is found, it is copied to the clipboard. If a confirmation link is fou
 Use Cases:
 
 Automating Verification Processes: This script is ideal for automating the process of receiving and using verification codes or clicking confirmation links for online registrations, sign-ins, or other processes that require verification emails.
-Multi-account Email Management: If you have multiple Gmail accounts and want to monitor them for important verification codes, this script makes it easy to handle all of them in one place.
+Multi-account Email Management: If you have multiple Gmail accounts and want to monitor them for important verification codes, this script makes it easy to handle all of them in one place
+
+Here's a step-by-step guide on how to set up and run the Python script, including the installation of necessary libraries:
+
+### 1. Install Python
+First, ensure you have Python installed. If not, download it from [python.org](https://www.python.org/downloads/) and install it. During the installation, make sure to check the option to **Add Python to PATH**.
+
+### 2. Install Required Libraries
+
+The script requires a few Python libraries. You can install them using `pip`. Follow these steps:
+
+1. **Create a Project Folder**:
+   - Create a folder for your project (e.g., `GmailVerificationScript`).
+
+2. **Navigate to the Project Folder**:
+   Open your terminal (Command Prompt or PowerShell in Windows, Terminal on macOS or Linux) and navigate to your project folder. Use the following command:
+
+   ```bash
+   cd path\to\your\project\folder
+   ```
+
+3. **Create a `requirements.txt` File**:
+   Inside your project folder, create a file named `requirements.txt` with the following content:
+
+   ```
+   imaplib
+   pyperclip
+   keyboard
+   langdetect
+   ```
+
+4. **Install the Libraries**:
+   In the terminal, run the following command to install all the required libraries:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+   This will install all the libraries needed for the script.
+
+### 3. Set Up Your Gmail Account for IMAP
+
+To use this script, you need to enable IMAP access in your Gmail account and generate an application-specific password.
+
+1. **Enable IMAP**:
+   - Go to your Gmail account.
+   - In the top right corner, click on the gear icon and go to **Settings**.
+   - Click on the **Forwarding and POP/IMAP** tab.
+   - Under the **IMAP Access** section, select **Enable IMAP** and click **Save Changes**.
+
+2. **Generate an Application-Specific Password**:
+   - Visit [Google's App Passwords page](https://myaccount.google.com/apppasswords).
+   - If 2-Step Verification is not enabled, enable it first.
+   - Under **Select app**, choose **Mail** and select **Windows Computer** (or another option that suits you).
+   - Generate the password and note it down.
+
+### 4. Configure the Script
+
+1. **Modify the Script**:
+   - Open the Python script in a text editor (e.g., Notepad or VS Code).
+   - Replace the `EMAIL` and `PASSWORD` fields with your Gmail address and application-specific password:
+     
+     ```python
+     EMAIL = "your_email@gmail.com"  # Your email
+     PASSWORD = "your_app_password"  # Your generated app password
+     ```
+
+2. **Add Multiple Gmail Accounts (if needed)**:
+   If you want to monitor multiple Gmail accounts, add the additional accounts under the `accounts` list in the script:
+
+   ```python
+   accounts = [
+       {"email": "your_email1@gmail.com", "password": "app_password1"},
+       {"email": "your_email2@gmail.com", "password": "app_password2"}
+   ]
+   ```
+
+### 5. Running the Script
+
+1. **Run the Script**:
+   - Open a terminal or command prompt and navigate to your project folder.
+   - Run the script using Python:
+
+   ```bash
+   python code.py
+   ```
+
+   The script will now monitor your Gmail accounts and wait for the specified keyboard shortcut (Ctrl + ') to check for verification codes and links.
+
+### 6. Setting Up the Keyboard Shortcut
+
+You can trigger the script to check for emails by pressing **Ctrl + '**. The script will check for new verification codes and confirmation links in the emails received within the last 10 minutes.
+
+### 7. (Optional) Run the Script in the Background
+
+If you'd like the script to keep running in the background, you can use `pythonw` (on Windows) to run it without opening a terminal window.
+
+- **On Windows**, run:
+
+   ```bash
+   pythonw code.py
+   ```
+
+   This will allow the script to run in the background and only respond to keyboard events.
+
+---
+
+That's it! You've successfully set up the Python script to monitor Gmail accounts for verification codes and confirmation links. Let me know if you encounter any issues along the way!
